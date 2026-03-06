@@ -3,7 +3,7 @@
   <div class="flex flex-col">
     <div class="flex flex-col space-y-4 p-3">
         <%= for msg <- @his_messages do %>
-        <div class="max-w-xs p-5 bg-blue-300 rounded-xl text-black">
+        <div class="max-w-xs p-5 bg-[#282c4d] text-white rounded-xl text-black">
             <div class="flex justify-start">
                 <%= msg.content %>
             </div>
@@ -14,8 +14,8 @@
       <% end %>
     </div>
       
-    <div>
-      <span>MESSAGE INPUT</span>
+    <div class="p-2">
+      <MessageBox.message_box/>
     </div>
   </div>
 </div>
