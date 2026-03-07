@@ -1,21 +1,24 @@
 defmodule CrowWeb.MessageBox do
-  use CrowWeb, :live_component
+  use Phoenix.LiveComponent
+  require Logger
 
   def render(assigns) do
     ~H"""
-    <div class="flex flex-row p-2 h-14 rounded-lg bg-[#282c4d] text-white w-full">
-      <Icons.microphone_icon />
-      <input
-        type="text"
-        placeholder="Type a message..."
-        phx-change="typing"
-        phx-target={@myself}
-        value={@message}
-        class="flex-1 mx-2 outline-none bg-transparent"
-      />
-      <Icons.image_icon />
-      <Icons.smile_icon />
-    </div>
+    <form phx-submit="send_message" phx-target={@myself}>
+      <div class="flex flex-row p-2 h-14 rounded-lg bg-[#282c4d] text-white w-full">
+        <Icons.microphone_icon />
+        <input
+          type="text"
+          placeholder="Type a message..."
+          phx-change="typing"
+          name="message"
+          value={@message}
+          class="flex-1 mx-2 outline-none bg-transparent"
+        />
+        <Icons.image_icon />
+        <Icons.smile_icon />
+      </div>
+    </form>
     """
   end
 
@@ -27,8 +30,15 @@ defmodule CrowWeb.MessageBox do
     {:ok, assign(socket, message: "")}
   end
 
-
-  def handle_event("typing", %{"0" => message}, socket) do
-    {:noreply, assign(socket, message: message)}
+  def handle_event("typing", %{"message" => message}, socket) do
+    form = to_form(%{message: message})
+    {:noreply, assign(socket, form: form)}
   end
+
+  def handle_event("send_message", %{"message" => message}, socket) do
+  Logger.info("Message sent: #{message}")
+  {:noreply, assign(socket, message: "")}
+end
+
+
 end
