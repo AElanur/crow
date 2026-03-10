@@ -19,6 +19,7 @@ defmodule CrowWeb.Router do
     pipe_through :browser
 
     live "/", ChatView
+    live "/profile", ProfileView
   end
 
   # Other scopes may use custom stacks.
