@@ -3,12 +3,19 @@ defmodule CrowWeb.ProfileView do
 
   def render(assigns) do
     ~H"""
-    <div class="flex flex-col w-1/2 m-auto p-5">
+    <div class="flex flex-col w-1/2 m-auto p-5 ">
       <div class="flex flex-col overflow-hidden rounded-xl">
-        <div class="flex-1 bg-[#733E6D] p-5">
-          <div class="rounded-full text-center m-auto w-25 h-25 border border-white">
-
+        <div class="flex justify-center bg-[#733E6D] justify-center block h-[8rem] relative justify-center">
+          <img src="/images/sylus_wp.png" class="w-full h-full object-cover" alt="Profile Wallpaper"/>
+          <div class="rounded-full border-4 border-[#1A1F25] text-center absolute mt-22 w-25 h-25 border">
+            <img src="/images/sylus.png" class="w-full h-full rounded-full object-cover" alt="Profile"/>
           </div>
+        </div>
+
+        <div class="h-[8rem] bg-[#1A1F25]">
+          <span>
+            Talon
+          </span>
         </div>
 
         <div class="flex flex-col flex-1 bg-[#1A1F25] space-y-2 p-3 divide-y divide-[#14181D]">
@@ -27,7 +34,7 @@ defmodule CrowWeb.ProfileView do
               </div>
           </div>
 
-          <div class="flex flex-row pt-2 pb-10 space-x-5">
+          <div class="flex flex-row pt-2 pb-8 space-x-5">
             <div class="flex flex-row border border-[#14181D] shadow-lg p-2 w-full">
               <div class="w-8 h-8">
                 <Icons.microphone_icon/>
