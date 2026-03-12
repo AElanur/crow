@@ -16,10 +16,9 @@ defmodule CrowWeb.ChatView do
           <div class="w-[15rem]">
           <.live_component module={CrowWeb.SocialList} id="social_list"/>
           </div>
-
-          <div class="flex flex-col h-screen flex-1">
+          <div class="flex flex-col h-screen flex-1 p-5">
             <.live_component module={CrowWeb.ChatHeaderView} id="chat_header"/>
-            <div class="w-full h-full rounded-xl">
+            <div class="w-full h-full rounded-b-xl overflow-hidden bg-[#1a2025]">
               <div class="flex flex-col space-y-4 p-3 h-full">
                   <%= for msg <- @his_messages do %>
                   <div class="max-w-xs p-5 bg-[#252c34] text-white rounded-t-lg rounded-br-lg text-black">
