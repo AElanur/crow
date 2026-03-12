@@ -3,7 +3,7 @@ defmodule CrowWeb.SocialList do
 
   def render(assigns) do
     ~H"""
-      <div class="h-full bg-[#0f1316] border-b border-[#181d21] shadow-lg">
+      <div class="h-full bg-[#141414] border-b border-[#181d21] shadow-lg">
         <div class="h-[5rem] flex flex-row space-x-2 ml-2">
           <div class="h-10 w-10 mt-auto mb-auto">
             <Icons.message_icon/>

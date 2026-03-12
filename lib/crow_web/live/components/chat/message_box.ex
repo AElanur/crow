@@ -5,7 +5,7 @@ defmodule CrowWeb.MessageBox do
   def render(assigns) do
     ~H"""
     <form phx-submit="send_message" phx-target={@myself}>
-      <div class="flex flex-row p-2 h-14 rounded-lg bg-[#252c34] text-white w-full">
+      <div class="flex flex-row p-2 h-14 rounded-lg bg-[#272728] text-white w-full">
         <Icons.microphone_icon />
         <input
           type="text"
