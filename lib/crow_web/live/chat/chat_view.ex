@@ -13,8 +13,11 @@ defmodule CrowWeb.ChatView do
   def render(assigns) do
     ~H"""
         <div class="flex flex-row w-screen">
+          <div class="w-[4rem]">
+            <.live_component module={CrowWeb.MenuBar} id="menu_bar"/>
+          </div>
           <div class="w-[15rem]">
-          <.live_component module={CrowWeb.SocialList} id="social_list"/>
+            <.live_component module={CrowWeb.SocialList} id="social_list"/>
           </div>
           <div class="flex flex-col h-screen flex-1 p-5">
             <.live_component module={CrowWeb.ChatHeaderView} id="chat_header"/>
