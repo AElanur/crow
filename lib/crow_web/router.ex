@@ -20,6 +20,7 @@ defmodule CrowWeb.Router do
 
     live "/", ChatView
     live "/profile", ProfileView
+    live "/register", RegisterView
   end
 
   # Other scopes may use custom stacks.
