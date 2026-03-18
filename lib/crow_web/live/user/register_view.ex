@@ -2,6 +2,8 @@ defmodule CrowWeb.RegisterView do
   require Logger
   use Phoenix.LiveView
 
+  alias Crow.CrowUsers
+
    def mount(_params, _session, socket) do
     form =
       to_form(%{
@@ -29,8 +31,8 @@ defmodule CrowWeb.RegisterView do
               <.form class="flex flex-col space-y-2" as={:user} for={@form} phx-submit="submit">
                 <Components.input field={@form[:email]} type={"text"} label={"Email"} placeholder={"Email"}/>
                 <Components.input field={@form[:username]} type={"text"} label={"Username"} placeholder={"Username"}/>
-                <Components.input field={@form[:password]} type={"password"} label={"Password"} placeholder={"Password"}/>
-                <Components.input field={@form[:password_confirmation]} type={"password"} label={"Confirm password"} placeholder={"Confirm password"}/>
+                <Components.input field={@form[:first_password]} type={"password"} label={"Password"} placeholder={"Password"}/>
+                <Components.input field={@form[:password]} type={"password"} label={"Confirm password"} placeholder={"Confirm password"}/>
               <div class="flex justify-end pt-5">
                 <Components.button name={"Register"}/>
               </div>
@@ -43,8 +45,20 @@ defmodule CrowWeb.RegisterView do
   end
 
   def handle_event("submit", params, socket) do
-    Logger.info(inspect(params))
+    action = socket.assigns.live_action || :new
+    create_user(socket, action, params)
+  end
 
-    {:noreply, socket}
+  defp create_user(socket, :new, user_params) do
+    case CrowUsers.create_user(user_params) do
+      {:ok, _user} ->
+        {:noreply,
+         socket
+         |> put_flash(:info, "User created successfully")
+         |> push_navigate(to: "/")}
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        {:noreply, assign(socket, form: to_form(changeset))}
+    end
   end
 end
