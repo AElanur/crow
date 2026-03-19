@@ -13,6 +13,8 @@ defmodule Components do
       <input
         class="bg-[#272728] shadow-xl h-[40px] px-3 rounded-sm"
         type={@type}
+        name={@field.name}
+        value={@field.value}
         placeholder={@placeholder}/>
     """
   end
@@ -21,7 +23,7 @@ defmodule Components do
   attr :name, :string, default: "submit"
   def button(assigns) do
     ~H"""
-      <input {@rest} type="button" value={@name} class="bg-[#272728] w-full h-[3rem]  rounded-sm"/>
+      <input {@rest} type="submit" value={@name} class="bg-[#272728] w-full h-[3rem]  rounded-sm"/>
     """
   end
 end

@@ -1,0 +1,9 @@
+CREATE TABLE "crow" (
+    crow_id bigint PRIMARY KEY, 
+    crow_name VARCHAR(20),
+    crow_password VARCHAR(60),
+    crow_joined date
+);
+
+
+

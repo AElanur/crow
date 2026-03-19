@@ -2,10 +2,11 @@ import Config
 
 # Configure your database
 config :crow, Crow.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "talon",
+  password: "talon",
   hostname: "localhost",
-  database: "crow_dev",
+  database: "crow",
+  port: 5432,
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

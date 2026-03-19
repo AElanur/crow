@@ -9,7 +9,7 @@ defmodule Crow.Application do
   def start(_type, _args) do
     children = [
       CrowWeb.Telemetry,
-      # Crow.Repo,
+      Crow.Repo,
       {DNSCluster, query: Application.get_env(:crow, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Crow.PubSub},
       # Start a worker by calling: Crow.Worker.start_link(arg)
