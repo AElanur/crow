@@ -103,4 +103,8 @@ defmodule Crow.CrowUsers do
   # # def change_user(%CrowUser{} = user, attrs \\ %{}) do
   # #   User.changeset(user, attrs)
   # # end
+
+  def authenticate_user(_email, _password) do
+    # TBI
+  end
 end

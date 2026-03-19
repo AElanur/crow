@@ -21,5 +21,18 @@ defmodule Crow.CrowUsers.CrowUser do
     crow_user
     |> cast(mapped_attrs, [:crow_name, :crow_mail, :crow_password])
     |> validate_required([:crow_name, :crow_password, :crow_mail])
+    |> hash_password()
+  end
+
+  defp hash_password(changeset) do
+    if password = get_change(changeset, :crow_password) do
+      put_change(
+        changeset,
+        :crow_password,
+        Argon2.hash_pwd_salt(password)
+      )
+    else
+      changeset
+    end
   end
 end
