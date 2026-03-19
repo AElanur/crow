@@ -21,7 +21,7 @@ defmodule Crow.MixProject do
   def application do
     [
       mod: {Crow.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :crypto]
     ]
   end
 
@@ -42,6 +42,7 @@ defmodule Crow.MixProject do
     [
       {:phoenix, "~> 1.8.4"},
       {:phoenix_ecto, "~> 4.5"},
+      {:guardian, "~> 2.3"},
       {:ecto_sql, "~> 3.13"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 4.1"},

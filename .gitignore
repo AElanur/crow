@@ -38,3 +38,5 @@ crow-*.tar
 npm-debug.log
 /assets/node_modules/
 
+privkey.pem
+

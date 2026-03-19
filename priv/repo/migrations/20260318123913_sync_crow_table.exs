@@ -7,7 +7,7 @@ defmodule Crow.Repo.Migrations.CrowUserTable do
       add :crow_name, :string, size: 40
       add :crow_password, :string, size: 120
       add :crow_mail, :string, size: 50
-      timestamps()
+      timestamps(type: :utc_datetime)
     end
   end
 end

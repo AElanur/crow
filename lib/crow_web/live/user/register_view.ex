@@ -2,7 +2,7 @@ defmodule CrowWeb.RegisterView do
   require Logger
   use Phoenix.LiveView
 
-  alias Crow.CrowUsers
+  alias CrowWeb.UserController
 
    def mount(_params, _session, socket) do
     form =
@@ -50,12 +50,12 @@ defmodule CrowWeb.RegisterView do
   end
 
   defp create_user(socket, :new, user_params) do
-    case CrowUsers.create_user(user_params) do
+    case UserController.register_user(user_params) do
       {:ok, _user} ->
         {:noreply,
          socket
          |> put_flash(:info, "User created successfully")
-         |> push_navigate(to: "/")}
+         |> redirect(to: "/")}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, form: to_form(changeset))}

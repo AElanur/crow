@@ -15,12 +15,22 @@ defmodule CrowWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    plug Guardian.Plug.EnsureAuthenticated
+    plug Guardian.Plug.LoadResource
+  end
+
   scope "/", CrowWeb do
     pipe_through :browser
 
     live "/", ChatView
-    live "/profile", ProfileView
     live "/register", RegisterView
+  end
+
+  scope "/api", CrowWeb do
+    pipe_through :auth
+    live "/profile", ProfileView
   end
 
   # Other scopes may use custom stacks.

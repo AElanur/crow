@@ -7,8 +7,7 @@ defmodule Crow.CrowUsers.CrowUser do
     field :crow_name, :string
     field :crow_password, :string
     field :crow_mail, :string
-    field :inserted_at, :utc_datetime_usec
-    field :updated_at, :utc_datetime_usec
+    timestamps(type: :utc_datetime)
   end
 
   @doc false
