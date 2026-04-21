@@ -4,7 +4,6 @@ defmodule Crow.CrowUsers do
   """
 
   import Ecto.Query, warn: false
-  import Logger
   alias Crow.Repo
 
   alias Crow.CrowUsers.CrowUser
@@ -51,7 +50,6 @@ defmodule Crow.CrowUsers do
 
   """
   def create_user(attrs) do
-    Logger.info(inspect(attrs))
     %CrowUser{}
     |> CrowUser.changeset(attrs)
     |> Repo.insert()

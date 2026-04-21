@@ -5,17 +5,30 @@ defmodule Components do
   attr :label, :string, default: nil
   attr :type, :string, default: "text"
   attr :placeholder, :string, default: "placeholder"
+  attr :maxlength, :integer, default: nil
+  attr :minlength, :integer, default: 8
+  attr :pattern, :string, default: nil
   attr :rest, :global
 
   def input(assigns) do
     ~H"""
-      <label><%= @label %></label>
-      <input
-        class="bg-[#272728] shadow-xl h-[40px] px-3 rounded-sm"
-        type={@type}
-        name={@field.name}
-        value={@field.value}
-        placeholder={@placeholder}/>
+      <div class="flex flex-col space-y-1">
+        <label><%= @label %></label>
+        <input
+          class="bg-[#272728] shadow-xl h-[40px] px-3 rounded-sm"
+          type={@type}
+          name={@field.name}
+          value={@field.value}
+          placeholder={@placeholder}
+          maxlength={@maxlength}
+          pattern={@pattern}
+          {@rest}
+        />
+
+        <%= for {msg, _} <- @field.errors do %>
+        <p class="text-red-500 text-sm"><%= msg %></p>
+        <% end %>
+      </div>
     """
   end
 
